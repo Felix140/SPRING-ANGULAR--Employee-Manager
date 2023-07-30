@@ -25,7 +25,8 @@ public class Employee implements Serializable {
     @Column(nullable = false, updatable = false) // qui aggiungo le info sulla colonna
     private String employeeCode;
 
-
+    public Employee() {
+    }
     public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
         this.id = id;
         this.name = name;
