@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
     void deleteEmployeeById(Long id);
     Optional<Employee> findEmployeeById(Long id); // chiamato QUERY METHOD in spring
+//   Spring Data JPA genererà automaticamente la query SQL corrispondente per recuperare l'oggetto Employee con l'ID specificato dal database
 }
