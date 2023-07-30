@@ -10,7 +10,7 @@ import tech.getarrays.employeemanager.exception.UserNotFoundException;
 import tech.getarrays.employeemanager.model.Employee;
 import tech.getarrays.employeemanager.repo.EmployeeRepo;
 
-@Service
+@Service //* utilizzata per abilitare la scansione dei componenti e per consentire a Spring di gestire le classi contrassegnate come servizi.
 public class EmployeeService {
 
     private final EmployeeRepo employeeRepo;
