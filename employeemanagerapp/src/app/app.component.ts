@@ -9,13 +9,15 @@ import { EmployeeService } from './employee.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
-  public employees!: Employee[];
+
+  public employees: Employee[] = []; //! INIZIALIZZARE KA VARIABILE EMPLOYEES
   employee: any;
 
   constructor(private employeeService: EmployeeService) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getEmployees();
+    // throw new Error('Method not implemented.');
   }
 
   public getEmployees(): void {
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
 
       (errore: HttpErrorResponse) => {
         alert(errore.message)
+        // this.employees = []; // Imposta employees come un array vuoto in caso di errore
       }
 
     )

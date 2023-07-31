@@ -8,7 +8,7 @@ import { Employee } from './employee';
     providedIn: 'root' // correzione da "provideIn" a "providedIn"
 })
 export class EmployeeService {
-    private apiServerUrl = environment.apiBaseUrl;
+    private apiServerUrl = environment.apiBaseUrl; // accediamo qui all'URL del backend
 
     constructor(private http: HttpClient) {
 
