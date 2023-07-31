@@ -10,7 +10,7 @@ import { EmployeeService } from './employee.service';
 })
 export class AppComponent implements OnInit {
 
-  public employees: Employee[] = []; //! INIZIALIZZARE KA VARIABILE EMPLOYEES
+  public employees: Employee[] = []; //! INIZIALIZZARE LA VARIABILE EMPLOYEES
   employee: any;
 
   constructor(private employeeService: EmployeeService) { }
