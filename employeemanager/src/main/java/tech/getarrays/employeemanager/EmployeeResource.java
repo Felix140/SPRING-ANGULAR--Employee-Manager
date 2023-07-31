@@ -2,6 +2,7 @@ package tech.getarrays.employeemanager;
 
 import java.util.List;
 
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -60,10 +61,14 @@ public class EmployeeResource {
     }
 
     //* DELETE
+    @Transactional //! aggiungere questa ANNOTATION PER FAR FUNZIONARE IL METODO DELETE
     @DeleteMapping("/delete/{id}") // utilizziamo questa annotation perchè dobbiamo ELIMINARE il backend
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) { // aggiungo il <?> perchè il metodo non ritorna nulla
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+// ?   Gli altri metodi (getAllEmployee, getEmployeeById, addEmployee, e updateEmployee)
+// ?   non richiedono l'annotazione @Transactional perché sono operazioni di sola lettura
+// ?   o operazioni di inserimento/aggiornamento nel database.
 
 }
