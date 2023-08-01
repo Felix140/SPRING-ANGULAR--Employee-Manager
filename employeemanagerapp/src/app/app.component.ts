@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
 
   public employees: Employee[] = []; //! INIZIALIZZARE LA VARIABILE EMPLOYEES
   employee: any;
+  public editEmployee!: Employee; // usiamo questa variabile per BINDARE
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -21,7 +22,9 @@ export class AppComponent implements OnInit {
     // throw new Error('Method not implemented.');
   }
 
+  //* GET
   public getEmployees(): void {
+    // richiamo qui sotto il metodo getEmployees(employee) da employee.service
     this.employeeService.getEmployees().subscribe(
 
       (response: Employee[]) => {
@@ -41,11 +44,12 @@ export class AppComponent implements OnInit {
     document.getElementById("reset-add-form")?.click();
   }
 
+  //* ADD
   // aggiungere direttiva NgForm come tipo di dato per il parametro da passare a (ngSubmit)
   public onAddEmployee(addForm: NgForm): void {
-
+    // richiamo qui sotto il metodo addEmployees(employee) da employee.service
     this.employeeService.addEmployees(addForm.value).subscribe(
-      
+
       (response: Employee[]) => {
         console.log(response);
         this.getEmployees();
@@ -54,14 +58,31 @@ export class AppComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-      
+
     );
   }
 
-// creo il MODAL dei BOTTONI:
-// <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-//   Launch demo modal
-// </button>
+  //* UPDATE
+  public onUpdateEmployee(employee: Employee): void {
+    // richiamo qui sotto il metodo updateEmployees(employee) da employee.service
+    this.employeeService.updateEmployees(employee).subscribe(
+
+      (response: Employee[]) => {
+        console.log(response);
+        this.getEmployees();
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+    );
+  }
+
+  // creo il MODAL dei BOTTONI:
+  // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  //   Launch demo modal
+  // </button>
   public onOpenModal(employee: Employee, mode: string): void { // mode: specificherà l'azione che l'utente eseguirà
     const button = document.createElement('button');
     const container = document.getElementById('main-container');
@@ -77,6 +98,7 @@ export class AppComponent implements OnInit {
     }
 
     if (mode == 'edit') {
+      this.editEmployee = employee; //fa riferimento dal contenuto di editEmployee del onOpenModal CLICCATO(employee)
       button.setAttribute("data-bs-target", "#updateEmployeeModal");
     }
 
