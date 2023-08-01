@@ -35,4 +35,35 @@ export class AppComponent implements OnInit {
     )
   }
 
+// creo il MODAL dei BOTTONI:
+// <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+//   Launch demo modal
+// </button>
+  public onOpenModal(employee: Employee, mode: string): void { // mode: specificherà l'azione che l'utente eseguirà
+    const button = document.createElement('button');
+    const container = document.getElementById('main-container');
+
+    //* importo gli attributi
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute("data-bs-toggle", "modal");
+
+    // il target sarà differente in base al bottone che viene premuto:
+    if (mode == 'add') {
+      button.setAttribute("data-bs-target", "#addEmployeeModal");
+    }
+
+    if (mode == 'edit') {
+      button.setAttribute("data-bs-target", "#updateEmployeeModal");
+    }
+
+    if (mode == 'delete') {
+      button.setAttribute("data-bs-target", "#deleteEmployeeModal");
+    }
+
+    // aggiungo i bottoni al container
+    container?.appendChild(button);
+    // al momento del click avvia il MODAL corrispondente
+    button.click();
+  }
 }

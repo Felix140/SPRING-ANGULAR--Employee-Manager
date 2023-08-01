@@ -1,15 +1,84 @@
-<div class="mb-3">
+<div class="header">
     <app-navbar></app-navbar>
+
+    <button class="btn btn-primary d-block m-auto my-2" (click)="onOpenModal(employee, 'add') "> AGGIUNGI EMPLOYEE </button>
 </div>
 
 <!-- <div *ngFor="let employee of employees">
     <div> {{ employee.name }} </div>
 </div> -->
 
+<!-- ADD EMPLOYEE MODAL -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary">Aggiungi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- EDIT EMPLOYEE MODAL -->
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Questo è il body
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="container__cards border border-success">
+<!-- DELETE EMPLOYEE MODAL -->
+<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Vuoi confermare l'eliminazione del profilo?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Elimina</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container__cards border border-success pt-5" id="main-container">
+    <!-- <button class="btn btn-primary d-block m-auto" (click)="onOpenModal(null, 'add')">Aggiungi Employee</button> -->
+
     <!-- ? *ngFor -->
     <div *ngFor="let employee of employees" class="row border border-danger">
 
@@ -45,14 +114,19 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <p class="m-t-15 text-muted">{{ employee?.email }}</p>
                 <hr>
 
-                <div class="row justify-content-center user-social-link">
+                <!-- <div class="row justify-content-center user-social-link">
                     <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
                     <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
                     <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
+                </div> -->
+
+                <div class="btn-container">
+                    <button class="btn btn-secondary" (click)="onOpenModal(employee, 'edit') "> Modifica </button>
+                    <button class="btn btn-danger" (click)="onOpenModal(employee, 'delete') "> Elimina Profilo </button>
                 </div>
 
             </div>

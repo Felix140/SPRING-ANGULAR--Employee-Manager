@@ -38,7 +38,6 @@ body {
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
     box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
     border: none;
-    margin-bottom: 30px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -139,7 +138,18 @@ body {
 }
 
 .bg-c-blue {
-    background: linear-gradient(45deg, #4099ff, #73b4ff);
+    /* background: linear-gradient(45deg, #4099ff, #73b4ff); */
+    background-image: linear-gradient(
+        0deg,
+        hsl(223deg 90% 69%) 0%,
+        hsl(233deg 93% 70%) 14%,
+        hsl(245deg 96% 68%) 29%,
+        hsl(256deg 99% 61%) 43%,
+        hsl(262deg 100% 60%) 57%,
+        hsl(263deg 100% 68%) 71%,
+        hsl(266deg 100% 73%) 86%,
+        hsl(270deg 100% 77%) 100%
+    );
 }
 
 .bg-c-green {
@@ -210,4 +220,72 @@ body {
     position: absolute;
     left: 0;
     z-index: 10;
+}
+
+/* BUTTONS */
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.btn {
+    border-radius: 15px;
+    border: none;
+
+    padding: 10px 15px;
+}
+
+.btn-primary {
+    background-image: linear-gradient(
+        5deg,
+        hsl(240deg 100% 64%) 1%,
+        hsl(236deg 100% 63%) 15%,
+        hsl(231deg 100% 63%) 23%,
+        hsl(226deg 99% 62%) 30%,
+        hsl(221deg 99% 62%) 37%,
+        hsl(217deg 99% 61%) 46%,
+        hsl(212deg 99% 61%) 55%,
+        hsl(208deg 98% 60%) 69%,
+        hsl(203deg 98% 60%) 100%
+    );
+
+    border: none;
+}
+
+.btn-secondary {
+}
+
+.btn-danger {
+    background-image: linear-gradient(
+        5deg,
+        hsl(0deg 92% 55%) 1%,
+        hsl(356deg 92% 54%) 15%,
+        hsl(353deg 92% 53%) 23%,
+        hsl(350deg 91% 52%) 30%,
+        hsl(346deg 90% 51%) 37%,
+        hsl(343deg 90% 50%) 46%,
+        hsl(339deg 90% 49%) 55%,
+        hsl(336deg 89% 49%) 69%,
+        hsl(332deg 89% 48%) 100%
+    );
+
+    border: none;
+}
+
+.btn-danger:hover {
+    background-image: linear-gradient(
+        5deg,
+        hsl(0deg 92% 50%) 0%,
+        hsl(5deg 92% 51%) 10%,
+        hsl(10deg 92% 51%) 17%,
+        hsl(15deg 92% 52%) 24%,
+        hsl(20deg 91% 52%) 32%,
+        hsl(25deg 91% 53%) 41%,
+        hsl(29deg 91% 53%) 52%,
+        hsl(34deg 91% 54%) 66%,
+        hsl(39deg 91% 54%) 100%
+    );
+
+    border: none;
 }
