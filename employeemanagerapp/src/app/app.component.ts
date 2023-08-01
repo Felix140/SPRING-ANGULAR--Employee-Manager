@@ -101,6 +101,35 @@ export class AppComponent implements OnInit {
     document.getElementById("close-delete-form")?.click();
   }
 
+
+
+  // * SEARCH BAR
+  public searchEmployees(key: string): void { // la key è il valore che l'utente scriverà nella searchbar
+    // creo un array per inserire gli elementi per la ricerca
+    const results: Employee[] = [];
+
+    // utilizzo il loop for...of sull'array "public employees: Employee[]"
+    for (const employee of this.employees) {
+      if (employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(employee);
+      }
+    }
+    //? Il indexOf()metodo restituisce il primo indice in cui è
+    //? possibile trovare un dato elemento nell'array,
+    //? oppure -1 se non è presente.
+
+
+    this.employees = results;
+    if(results.length === 0 || !key) {
+      this.getEmployees();
+    }
+  }
+
+
+
   // creo il MODAL dei BOTTONI:
   // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   //   Launch demo modal

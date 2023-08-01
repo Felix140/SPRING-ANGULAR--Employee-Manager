@@ -3,6 +3,11 @@
 
     <button class="btn btn-primary d-block m-auto my-2" (click)="onOpenModal(employee, 'add') "> AGGIUNGI PROFILO
     </button>
+    <form action="" class="form border border-primary">
+        <!-- ! Fare anche qui attenzione all'attributo 'name'->key  -->
+        <input (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" type="search"
+            placeholder="Cerca profilo" class="form-control">
+    </form>
 </div>
 
 <!-- <div *ngFor="let employee of employees">
