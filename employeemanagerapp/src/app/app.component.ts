@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public employees: Employee[] = []; //! INIZIALIZZARE LA VARIABILE EMPLOYEES
   employee: any;
   public editEmployee!: Employee; // usiamo questa variabile per BINDARE
+  public deleteEmployee!: Employee;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -79,6 +80,27 @@ export class AppComponent implements OnInit {
     );
   }
 
+
+  //* DELETE
+  public onDeleteEmployee(employee: number): void { // di tipo :number -> employee.service.ts
+    // richiamo qui sotto il metodo updateEmployees(employee) da employee.service
+    this.employeeService.deleteEmployees(employee).subscribe(
+
+      (response: Employee[]) => {
+        console.log(response);
+        this.getEmployees();
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+    );
+
+    // chiudi la maschera una volta premuto il tasto ELIMINA
+    document.getElementById("close-delete-form")?.click();
+  }
+
   // creo il MODAL dei BOTTONI:
   // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   //   Launch demo modal
@@ -103,6 +125,7 @@ export class AppComponent implements OnInit {
     }
 
     if (mode == 'delete') {
+      this.deleteEmployee = employee; //fa riferimento dal contenuto di editEmployee del onOpenModal CLICCATO(employee)
       button.setAttribute("data-bs-target", "#deleteEmployeeModal");
     }
 

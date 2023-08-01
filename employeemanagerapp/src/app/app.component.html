@@ -130,13 +130,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" id="close-delete-form" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Vuoi confermare l'eliminazione del profilo?
+                Vuoi confermare l'eliminazione del profilo di {{ deleteEmployee?.name }}?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Elimina</button>
+                <button (click)="onDeleteEmployee(deleteEmployee.id)" type="button" class="btn btn-primary">Elimina</button>
             </div>
         </div>
     </div>
