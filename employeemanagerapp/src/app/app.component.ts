@@ -33,7 +33,12 @@ export class AppComponent implements OnInit {
         // this.employees = []; // Imposta employees come un array vuoto in caso di errore
       }
 
-    )
+    );
+
+    //*CHIUDO e RESETTO  il form una volta premuto il tasto AGGIUNGI
+
+    document.getElementById("close-add-form")?.click();
+    document.getElementById("reset-add-form")?.click();
   }
 
   // aggiungere direttiva NgForm come tipo di dato per il parametro da passare a (ngSubmit)

@@ -15,7 +15,7 @@
         <div class="modal-content border border-danger">
             <div class="modal-header border border-success">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-add-form"></button>
             </div>
             <div class="modal-body">
                 <!-- Aggiungo al form:  #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)" -->
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="btn-container">
-                        <button type="reset" class="btn btn-secondary">Resetta</button>
+                        <button type="reset" class="btn btn-secondary" id="reset-add-form">Resetta</button>
                         <!-- [disabled]="addForm.invalid": se il form non è valido allora DISABLED -->
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Aggiungi</button>
                     </div>
