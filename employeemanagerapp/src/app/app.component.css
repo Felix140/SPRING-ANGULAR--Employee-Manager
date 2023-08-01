@@ -27,10 +27,10 @@ body {
     transition: all 150ms linear;
 
     border-radius: 45px;
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    background: #f3f3f3;
     box-shadow:
-        41px 41px 68px #989898,
-        -41px -41px 68px #ffffff;
+        5px 5px 21px #adadad,
+        -5px -5px 21px #ffffff;
 }
 
 .card {
@@ -90,7 +90,21 @@ body {
 }
 
 .img-radius {
+    --blue: linear-gradient(
+        5deg,
+        hsl(240deg 100% 64%) 1%,
+        hsl(236deg 100% 63%) 15%,
+        hsl(231deg 100% 63%) 23%,
+        hsl(226deg 99% 62%) 30%,
+        hsl(221deg 99% 62%) 37%,
+        hsl(217deg 99% 61%) 46%,
+        hsl(212deg 99% 61%) 55%,
+        hsl(208deg 98% 60%) 69%,
+        hsl(203deg 98% 60%) 100%
+    );
+
     border-radius: 50%;
+    background-image: var(--blue);
 }
 
 .f-w-600 {
@@ -140,15 +154,16 @@ body {
 .bg-c-blue {
     /* background: linear-gradient(45deg, #4099ff, #73b4ff); */
     background-image: linear-gradient(
-        0deg,
-        hsl(223deg 90% 69%) 0%,
-        hsl(233deg 93% 70%) 14%,
-        hsl(245deg 96% 68%) 29%,
-        hsl(256deg 99% 61%) 43%,
-        hsl(262deg 100% 60%) 57%,
-        hsl(263deg 100% 68%) 71%,
-        hsl(266deg 100% 73%) 86%,
-        hsl(270deg 100% 77%) 100%
+        5deg,
+        hsl(240deg 100% 64%) 1%,
+        hsl(236deg 100% 63%) 15%,
+        hsl(231deg 100% 63%) 23%,
+        hsl(226deg 99% 62%) 30%,
+        hsl(221deg 99% 62%) 37%,
+        hsl(217deg 99% 61%) 46%,
+        hsl(212deg 99% 61%) 55%,
+        hsl(208deg 98% 60%) 69%,
+        hsl(203deg 98% 60%) 100%
     );
 }
 
@@ -188,13 +203,13 @@ body {
     color: #ec4a89;
 }
 
-.user-card .card-block .user-image:before {
+/* .user-card .card-block .user-image:before {
     bottom: 0;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-}
+} */
 
-.user-card .card-block .user-image:after,
+/* .user-card .card-block .user-image:after,
 .user-card .card-block .user-image:before {
     content: "";
     width: 100%;
@@ -203,15 +218,15 @@ body {
     position: absolute;
     left: 0;
     z-index: 10;
-}
+} */
 
-.user-card .card-block .user-image:after {
+/* .user-card .card-block .user-image:after {
     top: 0;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-}
+} */
 
-.user-card .card-block .user-image:after,
+/* .user-card .card-block .user-image:after,
 .user-card .card-block .user-image:before {
     content: "";
     width: 100%;
@@ -220,7 +235,7 @@ body {
     position: absolute;
     left: 0;
     z-index: 10;
-}
+} */
 
 /* BUTTONS */
 
@@ -230,7 +245,7 @@ body {
     gap: 20px;
 }
 .btn {
-    border-radius: 15px;
+    border-radius: 12px;
     border: none;
 
     padding: 10px 15px;
@@ -253,10 +268,47 @@ body {
     border: none;
 }
 
+.btn-primary:hover {
+    background-image: linear-gradient(
+        270deg,
+        hsl(238deg 85% 63%) 0%,
+        hsl(238deg 85% 63%) 5%,
+        hsl(238deg 85% 63%) 10%,
+        hsl(238deg 85% 63%) 15%,
+        hsl(238deg 85% 63%) 20%,
+        hsl(238deg 85% 63%) 25%,
+        hsl(238deg 85% 63%) 30%,
+        hsl(238deg 85% 63%) 35%,
+        hsl(238deg 85% 63%) 40%,
+        hsl(238deg 85% 63%) 45%,
+        hsl(238deg 85% 63%) 50%,
+        hsl(238deg 85% 63%) 55%,
+        hsl(238deg 85% 63%) 60%,
+        hsl(238deg 85% 63%) 65%,
+        hsl(238deg 85% 63%) 70%,
+        hsl(238deg 85% 63%) 75%,
+        hsl(238deg 85% 63%) 80%,
+        hsl(238deg 85% 63%) 85%,
+        hsl(238deg 85% 63%) 90%,
+        hsl(238deg 85% 63%) 95%,
+        hsl(238deg 85% 63%) 100%
+    );
+    border: none;
+}
+
 .btn-secondary {
 }
 
 .btn-danger {
+    color: red;
+    font-weight: 20px;
+
+    background-color: transparent;
+    border: 1px solid red;
+}
+
+.btn-danger:hover {
+    color: white;
     background-image: linear-gradient(
         5deg,
         hsl(0deg 92% 55%) 1%,
@@ -270,22 +322,23 @@ body {
         hsl(332deg 89% 48%) 100%
     );
 
-    border: none;
+    border: 1px solid red;
 }
 
-.btn-danger:hover {
-    background-image: linear-gradient(
-        5deg,
-        hsl(0deg 92% 50%) 0%,
-        hsl(5deg 92% 51%) 10%,
-        hsl(10deg 92% 51%) 17%,
-        hsl(15deg 92% 52%) 24%,
-        hsl(20deg 91% 52%) 32%,
-        hsl(25deg 91% 53%) 41%,
-        hsl(29deg 91% 53%) 52%,
-        hsl(34deg 91% 54%) 66%,
-        hsl(39deg 91% 54%) 100%
-    );
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-    border: none;
+    padding: 30px 50px;
+    width: 100%;
+    border: 2px solid red;
+
+    & .actions__form {
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

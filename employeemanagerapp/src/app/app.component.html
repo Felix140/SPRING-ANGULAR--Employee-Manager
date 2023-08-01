@@ -1,13 +1,15 @@
 <div class="header">
     <app-navbar></app-navbar>
 
-    <button class="btn btn-primary d-block m-auto my-2" (click)="onOpenModal(employee, 'add') "> AGGIUNGI PROFILO
-    </button>
-    <form action="" class="form border border-primary">
-        <!-- ! Fare anche qui attenzione all'attributo 'name'->key  -->
-        <input (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" type="search"
-            placeholder="Cerca profilo" class="form-control">
-    </form>
+    <div class="actions">
+        <button class="btn btn-primary actions__btn" (click)="onOpenModal(employee, 'add') "> AGGIUNGI PROFILO
+        </button>
+        <form action="" class="actions__form">
+            <!-- ! Fare anche qui attenzione all'attributo 'name'->key  -->
+            <input (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" type="search"
+                placeholder="Cerca profilo" class="form-control">
+        </form>
+    </div>
 </div>
 
 <!-- <div *ngFor="let employee of employees">
@@ -17,15 +19,15 @@
 <!-- ADD EMPLOYEE MODAL FORM -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content border border-danger">
-            <div class="modal-header border border-success">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-add-form"></button>
             </div>
             <div class="modal-body">
                 <!-- Aggiungo al form:  #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)" -->
-                <form class="form-content border border-success" #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
+                <form class="form-content" #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
                     <!-- #addForm="ngForm": manda il file JSON AL BACKEND -->
                     <!-- Aggiungere gli ngModel a tutti gli input -->
                     <div class="mb-3 form-floating">
@@ -80,7 +82,7 @@
             </div>
             <div class="modal-body">
                 
-                <form class="form-content border border-success" #editForm="ngForm">
+                <form class="form-content" #editForm="ngForm">
 
                     <!-- ! È NECESSARIO AGGIUNGERE ANCHE QUESTI CAMPI HIDDEN ALTRIMENTI DARÀ ERROR 500 -->
                     <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" > 
@@ -147,16 +149,16 @@
     </div>
 </div>
 
-<div class="container__cards border border-success pt-5" id="main-container">
+<div class="container__cards pt-5" id="main-container">
     <!-- <button class="btn btn-primary d-block m-auto" (click)="onOpenModal(null, 'add')">Aggiungi Employee</button> -->
 
     <!-- ? *ngFor -->
-    <div *ngFor="let employee of employees" class="row border border-danger">
+    <div *ngFor="let employee of employees" class="row">
 
         <!-- <div class="col-md-4"> -->
         <div class="card user-card">
 
-            <div class="card-header border border-success">
+            <div class="card-header">
                 <h5>Profile</h5>
             </div>
 
