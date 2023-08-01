@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 
@@ -33,6 +34,23 @@ export class AppComponent implements OnInit {
       }
 
     )
+  }
+
+  // aggiungere direttiva NgForm come tipo di dato per il parametro da passare a (ngSubmit)
+  public onAddEmployee(addForm: NgForm): void {
+
+    this.employeeService.addEmployees(addForm.value).subscribe(
+      
+      (response: Employee[]) => {
+        console.log(response);
+        this.getEmployees();
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      
+    );
   }
 
 // creo il MODAL dei BOTTONI:
