@@ -48,9 +48,9 @@
                     </div>
 
                     <div class="mb-3 form-floating">
-                        <input ngModel type="text" class="form-control" id="img" name="img"
+                        <input ngModel type="text" class="form-control" id="imageUrl" name="imageUrl"
                             placeholder="inserisci qui il testo" required>
-                        <label for="img" class="form-label">Img URL</label>
+                        <label for="imageUrl" class="form-label">Img URL</label>
                     </div>
 
                     <div class="btn-container">
@@ -76,7 +76,7 @@
             <div class="modal-body">
                 
                 <form class="form-content border border-success" #editForm="ngForm">
-                    
+
                     <!-- ! È NECESSARIO AGGIUNGERE ANCHE QUESTI CAMPI HIDDEN ALTRIMENTI DARÀ ERROR 500 -->
                     <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" > 
                     <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="employeeCode" class="form-control" id="employeeCode" >
