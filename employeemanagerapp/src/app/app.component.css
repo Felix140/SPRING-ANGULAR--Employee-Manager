@@ -342,3 +342,13 @@ body {
         align-items: center;
     }
 }
+
+/* Aggiungiamo la classe "move-away" solo quando il bottone si sta spostando */
+.btn-danger.move-away {
+    transition: transform 3s ease-out;
+}
+
+/* Assicuriamoci che il bottone sia sempre visibile */
+.btn-danger {
+    visibility: visible;
+}

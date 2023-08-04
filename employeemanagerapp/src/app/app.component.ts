@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
   employee: any;
   public editEmployee!: Employee; // usiamo questa variabile per BINDARE
   public deleteEmployee!: Employee;
+  private isMoving = false;
+  private originalButtonPosition: { top: number, left: number } = { top: 0, left: 0 };
+
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -123,7 +126,7 @@ export class AppComponent implements OnInit {
 
 
     this.employees = results;
-    if(results.length === 0 || !key) {
+    if (results.length === 0 || !key) {
       this.getEmployees();
     }
   }
@@ -163,4 +166,56 @@ export class AppComponent implements OnInit {
     // al momento del click avvia il MODAL corrispondente
     button.click();
   }
+
+
+
+
+  // Metodo per calcolare la nuova posizione del bottone e applicare lo stile per l'allontanamento
+  public moveButtonAway(event: MouseEvent): void {
+    if (!this.isMoving) {
+      this.isMoving = true;
+      const button = event.target as HTMLElement;
+      const cursorX = event.clientX;
+      const cursorY = event.clientY;
+
+      this.originalButtonPosition = button.getBoundingClientRect();
+
+      // Calcola le nuove coordinate del bottone
+      const deltaX = Math.min(cursorX - this.originalButtonPosition.left, 400);
+      const deltaY = Math.min(cursorY - this.originalButtonPosition.top, 400);
+      const targetX = this.originalButtonPosition.left + deltaX;
+      const targetY = this.originalButtonPosition.top + deltaY;
+
+      // Applica lo stile per la posizione assoluta e l'animazione
+      button.classList.add('move-away', 'absolute');
+      // Imposta la nuova posizione
+      button.style.left = `${this.originalButtonPosition.left}px`;
+      button.style.top = `${this.originalButtonPosition.top}px`;
+
+      // Avvia la transizione di spostamento
+      setTimeout(() => {
+        button.style.transform = `translate(${targetX}px, ${targetY}px)`;
+      }, 0);
+
+      // Imposta un timeout per reimpostare la variabile isMoving una volta completata la transizione
+      setTimeout(() => {
+        this.isMoving = false;
+      }, 300);
+    }
+  }
+
+  // Metodo per reimpostare la posizione del bottone
+  public resetButtonPosition(): void {
+    const button = document.querySelector('.btn-danger') as HTMLElement;
+    button.style.transform = 'translate(0, 0)';
+    button.classList.remove('absolute');
+    this.isMoving = false;
+  }
+
+  // Aggiungi questo metodo per reimpostare la posizione del bottone quando il mouse esce dall'area del bottone stesso
+  @HostListener('mouseleave', ['$event'])
+  public onMouseLeave(event: MouseEvent): void {
+    this.resetButtonPosition();
+  }
+
 }

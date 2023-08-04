@@ -199,7 +199,8 @@
 
                 <div class="btn-container">
                     <button class="btn btn-secondary" (click)="onOpenModal(employee, 'edit') "> Modifica </button>
-                    <button class="btn btn-danger" (click)="onOpenModal(employee, 'delete') "> Elimina Profilo </button>
+                    <button class="btn btn-danger" (click)="onOpenModal(employee, 'delete')"
+            (mouseover)="moveButtonAway($event)" (mouseleave)="resetButtonPosition()"> Elimina Profilo </button>
                 </div>
 
             </div>
