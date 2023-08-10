@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 
+// Componente principale dell'applicazione Angular
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,19 +12,19 @@ import { EmployeeService } from './employee.service';
 })
 export class AppComponent implements OnInit {
 
-  public employees: Employee[] = []; //! INIZIALIZZARE LA VARIABILE EMPLOYEES
+  public employees: Employee[] = []; //! INIZIALIZZARE LA VARIABILE EMPLOYEES: Array di dipendenti
   employee: any;
-  public editEmployee!: Employee; // usiamo questa variabile per BINDARE
-  public deleteEmployee!: Employee;
+  public editEmployee!: Employee; // usiamo questa variabile per BINDARE (Dipendente da modificare (inizialmente indefinito))
+  public deleteEmployee!: Employee; // Dipendente da eliminare (inizialmente indefinito)
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.getEmployees();
+    this.getEmployees(); // Chiamata alla funzione per ottenere la lista di dipendenti ALL'AVVIO
     // throw new Error('Method not implemented.');
   }
 
-  //* GET
+  //* GET: Ottiene la lista di dipendenti
   public getEmployees(): void {
     // richiamo qui sotto il metodo getEmployees(employee) da employee.service
     this.employeeService.getEmployees().subscribe(
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit {
     document.getElementById("reset-add-form")?.click();
   }
 
-  //* ADD
+  //* ADD: Aggiunge un nuovo dipendente
   // aggiungere direttiva NgForm come tipo di dato per il parametro da passare a (ngSubmit)
   public onAddEmployee(addForm: NgForm): void {
     // richiamo qui sotto il metodo addEmployees(employee) da employee.service
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  //* UPDATE
+  //* UPDATE: Aggiorna le informazioni di un dipendente
   public onUpdateEmployee(employee: Employee): void {
     // richiamo qui sotto il metodo updateEmployees(employee) da employee.service
     this.employeeService.updateEmployees(employee).subscribe(
@@ -81,7 +82,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  //* DELETE
+  //* DELETE: Elimina un dipendente
   public onDeleteEmployee(employee: number): void { // di tipo :number -> employee.service.ts
     // richiamo qui sotto il metodo updateEmployees(employee) da employee.service
     this.employeeService.deleteEmployees(employee).subscribe(
@@ -103,7 +104,7 @@ export class AppComponent implements OnInit {
 
 
 
-  // * SEARCH BAR
+  // * SEARCH BAR: Ricerca dei dipendenti in base alla chiave di ricerca (nome, email, telefono, jobTitle)
   public searchEmployees(key: string): void { // la key è il valore che l'utente scriverà nella searchbar
     // creo un array per inserire gli elementi per la ricerca
     const results: Employee[] = [];
@@ -134,6 +135,8 @@ export class AppComponent implements OnInit {
   // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   //   Launch demo modal
   // </button>
+
+  //* Apre il MODAL corrispondente alla modalità specificata (aggiunta, modifica, eliminazione)
   public onOpenModal(employee: Employee, mode: string): void { // mode: specificherà l'azione che l'utente eseguirà
     const button = document.createElement('button');
     const container = document.getElementById('main-container');
