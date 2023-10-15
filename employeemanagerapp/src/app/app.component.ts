@@ -20,28 +20,21 @@ export class AppComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.getEmployees(); // Chiamata alla funzione per ottenere la lista di dipendenti ALL'AVVIO
-    // throw new Error('Method not implemented.');
+    this.getEmployees();
   }
 
   //* GET: Ottiene la lista di dipendenti
   public getEmployees(): void {
-    // richiamo qui sotto il metodo getEmployees(employee) da employee.service
     this.employeeService.getEmployees().subscribe(
 
       (response: Employee[]) => {
         this.employees = response;
       },
-
       (errore: HttpErrorResponse) => {
         alert(errore.message)
-        // this.employees = []; // Imposta employees come un array vuoto in caso di errore
       }
 
     );
-
-    //*CHIUDO e RESETTO  il form una volta premuto il tasto AGGIUNGI
-
     document.getElementById("close-add-form")?.click();
     document.getElementById("reset-add-form")?.click();
   }
@@ -105,8 +98,7 @@ export class AppComponent implements OnInit {
 
 
   // * SEARCH BAR: Ricerca dei dipendenti in base alla chiave di ricerca (nome, email, telefono, jobTitle)
-  public searchEmployees(key: string): void { // la key è il valore che l'utente scriverà nella searchbar
-    // creo un array per inserire gli elementi per la ricerca
+  public searchEmployees(key: string): void {
     const results: Employee[] = [];
 
     // utilizzo il loop for...of sull'array "public employees: Employee[]"
@@ -128,13 +120,6 @@ export class AppComponent implements OnInit {
       this.getEmployees();
     }
   }
-
-
-
-  // creo il MODAL dei BOTTONI:
-  // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  //   Launch demo modal
-  // </button>
 
   //* Apre il MODAL corrispondente alla modalità specificata (aggiunta, modifica, eliminazione)
   public onOpenModal(employee: Employee, mode: string): void { // mode: specificherà l'azione che l'utente eseguirà

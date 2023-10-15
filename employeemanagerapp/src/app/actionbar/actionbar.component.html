@@ -1,0 +1,9 @@
+<div class="actions">
+    <button class="btn btn-primary actions__btn" (click)="onOpenModal(employee, 'add') "> AGGIUNGI PROFILO
+    </button>
+    <form action="" class="actions__form">
+        <!-- ! Fare anche qui attenzione all'attributo 'name'->key  -->
+        <input (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key" type="search"
+            placeholder="Cerca profilo" class="form-control">
+    </form>
+</div>

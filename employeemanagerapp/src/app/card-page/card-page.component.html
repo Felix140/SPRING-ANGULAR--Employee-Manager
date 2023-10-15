@@ -1,0 +1,10 @@
+<div class="container__cards pt-5" id="main-container">
+    <!-- <button class="btn btn-primary d-block m-auto" (click)="onOpenModal(null, 'add')">Aggiungi Employee</button> -->
+
+    <!-- ? *ngFor -->
+    <div *ngFor="let employee of employees" class="row">
+
+        <app-card></app-card>
+
+    </div>
+</div>
