@@ -8,6 +8,7 @@ import { CardPageComponent } from './card-page/card-page.component';
 import { CardComponent } from './card-page/card/card.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EmployeeService } from './services/employee.service';
+import { ModalFormComponent } from './modal-form/modal-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EmployeeService } from './services/employee.service';
     NavbarComponent,
     CardComponent,
     CardPageComponent,
-    ActionbarComponent
+    ActionbarComponent,
+    ModalFormComponent
   ],
   imports: [
     BrowserModule,

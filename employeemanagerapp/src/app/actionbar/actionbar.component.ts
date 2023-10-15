@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./actionbar.component.css']
 })
 export class ActionbarComponent {
+  
+  
+  onOpen() {}
 
+  onSearch() {}
 }

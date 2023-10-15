@@ -1,0 +1,133 @@
+<!-- ADD EMPLOYEE MODAL FORM -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    id="close-add-form"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Aggiungo al form:  #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)" -->
+                <form class="form-content" #addForm="ngForm" (ngSubmit)="onAdd(addForm)">
+                    <!-- #addForm="ngForm": manda il file JSON AL BACKEND -->
+                    <!-- Aggiungere gli ngModel a tutti gli input -->
+                    <div class="mb-3 form-floating">
+                        <input ngModel type="text" class="form-control" id="name" name="name"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="name" class="form-label">Nome e Cogome</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel type="email" class="form-control" id="email" name="email"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel type="text" class="form-control" id="jobTitle" name="jobTitle"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="jobTitle" class="form-label">Job title</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel type="text" class="form-control" id="phone" name="phone"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="phone" class="form-label">Telefono</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel type="text" class="form-control" id="imageUrl" name="imageUrl"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="imageUrl" class="form-label">Img URL</label>
+                    </div>
+
+                    <div class="btn-container">
+                        <button type="reset" class="btn btn-secondary" id="reset-add-form">Resetta</button>
+                        <!-- [disabled]="addForm.invalid": se il form non è valido allora DISABLED -->
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Aggiungi</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EDIT EMPLOYEE MODAL -->
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <form class="form-content" #editForm="ngForm">
+
+                    <!-- ! È NECESSARIO AGGIUNGERE ANCHE QUESTI CAMPI HIDDEN ALTRIMENTI DARÀ ERROR 500 -->
+                    <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" > 
+                    <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="employeeCode" class="form-control" id="employeeCode" >
+
+                    <!-- Aggiungere gli ngModel a tutti gli input -->
+                    <div class="mb-3 form-floating">
+                        <!--? ngModel da assegnare a {{ editEmployee }} questa volta BINDATO all'attributo di appartenenza -->
+                        <input ngModel="{{ editEmployee?.name }}" type="text" class="form-control" id="name" name="name"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="name" class="form-label">Nome e Cogome</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel="{{ editEmployee?.email }}" type="email" class="form-control" id="email" name="email"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel="{{ editEmployee?.jobTitle }}" type="text" class="form-control" id="jobTitle" name="jobTitle"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="jobTitle" class="form-label">Job title</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel="{{ editEmployee?.phone }}" type="text" class="form-control" id="phone" name="phone"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="phone" class="form-label">Telefono</label>
+                    </div>
+
+                    <div class="mb-3 form-floating">
+                        <input ngModel="{{ editEmployee?.imageUrl }}" type="text" class="form-control" id="imageUrl" name="imageUrl"
+                            placeholder="inserisci qui il testo" required>
+                        <label for="imageUrl" class="form-label">Img URL</label>
+                    </div>
+
+                    <div class="btn-container">
+                        <!-- Il valore di  editForm.value e l'informazione JSON-->
+                        <button (click)="onUpdate(editForm.value)" type="submit" class="btn btn-primary">Salva le modifiche</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE EMPLOYEE MODAL -->
+<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" id="close-delete-form" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Vuoi confermare l'eliminazione del profilo di {{ deleteEmployee?.name }}?
+            </div>
+            <div class="modal-footer">
+                <button (click)="onDelete(deleteEmployee.id)" type="button" class="btn btn-primary">Elimina</button>
+            </div>
+        </div>
+    </div>
+</div>
+
