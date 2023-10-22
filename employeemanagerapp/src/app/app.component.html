@@ -12,10 +12,6 @@
     </div>
 </div>
 
-<!-- <div *ngFor="let employee of employees">
-    <div> {{ employee.name }} </div>
-</div> -->
-
 <!-- ADD EMPLOYEE MODAL FORM -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -62,7 +58,6 @@
 
                     <div class="btn-container">
                         <button type="reset" class="btn btn-secondary" id="reset-add-form">Resetta</button>
-                        <!-- [disabled]="addForm.invalid": se il form non è valido allora DISABLED -->
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Aggiungi</button>
                     </div>
 
@@ -136,7 +131,6 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" id="close-delete-form" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -150,12 +144,9 @@
 </div>
 
 <div class="container__cards pt-5" id="main-container">
-    <!-- <button class="btn btn-primary d-block m-auto" (click)="onOpenModal(null, 'add')">Aggiungi Employee</button> -->
 
-    <!-- ? *ngFor -->
     <div *ngFor="let employee of employees" class="row">
 
-        <!-- <div class="col-md-4"> -->
         <div class="card user-card">
 
             <div class="card-header">
@@ -191,11 +182,6 @@
                 <p class="m-t-15 text-muted">{{ employee?.email }}</p>
                 <hr>
 
-                <!-- <div class="row justify-content-center user-social-link">
-                    <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                    <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                    <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
-                </div> -->
 
                 <div class="btn-container">
                     <button class="btn btn-secondary" (click)="onOpenModal(employee, 'edit') "> Modifica </button>
@@ -204,7 +190,6 @@
 
             </div>
         </div>
-        <!-- </div> -->
 
     </div>
 </div>

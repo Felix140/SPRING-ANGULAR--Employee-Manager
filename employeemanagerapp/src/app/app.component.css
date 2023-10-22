@@ -333,7 +333,7 @@ body {
 
     padding: 30px 50px;
     width: 100%;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 
     & .actions__form {
         width: 300px;
