@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'; // Aggiunto HttpClient
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Employee } from './employee';
+import { Employee } from '../model/employee';
 
 @Injectable({
     providedIn: 'root' // correzione da "provideIn" a "providedIn" //* Il servizio è reso disponibile a livello globale nell'app

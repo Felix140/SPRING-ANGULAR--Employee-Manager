@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Employee } from './employee';
-import { EmployeeService } from './employee.service';
+import { Employee } from './model/employee';
+import { EmployeeService } from './services/employee.service';
 
 // Componente principale dell'applicazione Angular
 @Component({
